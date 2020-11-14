@@ -1,11 +1,11 @@
 <header>
     <nav>
         <ul class="nav navbar nav-tabs">
-            <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link active">Home</a></li>
-            <li class="nav-item"><a href="{{ url_for('bunnies') }}" class="nav-link">Bunnies</a></li>
-            <li class="nav-item"><a href="{{ url_for('carrots') }}" class="nav-link">Carrots</a></li>
-            <li class="nav-item"><a href="{{ url_for('register') }}" class="nav-link">Register</a></li>
-            <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link {% if index %}active{% endif %}">Home</a></li>
+            <li class="nav-item"><a href="{{ url_for('bunnies') }}" class="nav-link {% if bunnies %}active{% endif %}">Bunnies</a></li>
+            <li class="nav-item"><a href="{{ url_for('carrots') }}" class="nav-link {% if carrots %}active{% endif %}">Carrots</a></li>
+            <li class="nav-item"><a href="{{ url_for('register') }}" class="nav-link {% if register %}active{% endif %}">Register</a></li>
+            <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link {% if login %}active{% endif %}">Login</a></li>
         </ul>
     </nav>
     <hr style="clear:both">

@@ -1,6 +1,20 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Login</h1>
+<h1 style='text-align:center'>Login</h1>
 
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3></h3>
+        <form name="login" action="login" method="get">
+            <label for="username"><b>Username or email</b></label>
+            <input type="text" placeholder="Username" name="username" required>
+            <br>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Password" name="password" required>
+            <br class="clear">
+            <input class="btn-submit" style='background-color:orangered' type="submit" name="submit" value="Login">
+        </form>
+    </div>
+</div>
 {% endblock %}
