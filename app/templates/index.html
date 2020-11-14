@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <img id='bunny-logo' src="static/images/bunny.jpg">
+        <h1>Welcome to amazingbunny.com</h1>
+        {% if login %}
+        <h3>Let's make some epic bunny based games.</h3>
+        {% else %}
+        <h5>u registered? <a href="{{url_for('login')}}">Login</a></h5>
+        <h5>no? <a href='register.html'>Register</a></h5>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

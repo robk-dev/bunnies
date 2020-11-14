@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(39deg,
+            rgba(3, 3, 3, 0.28895308123249297) 29%,
+            rgba(255, 255, 255, 0.8239670868347339) 92%,
+            rgba(157, 233, 148, 0.1516981792717087) 99%);
+}
+
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+#root {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+header {
+    text-align: center;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: orangered;
+    border-radius: 5px;
+}
+
+.nav-link.active {
+    color: #fff;
+    background-color: red;   
+}
+
+#bunny-logo {
+    margin-top: 15px;
+    border-radius: 15px;
+    border-right: 1px solid rgba(0, 0, 0, .12);
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+
+hr {
+    width: 100%;
+    height: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0 none;
+}
+
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.top-container {
+    background: #fff;
+    color: rgba(0, 0, 0, .87);
+    padding: 5px;
+    border-bottom: 1px solid #0f0f0f;
+    font-size: 14px;
+}
+
+.bottom-container {
+    background: #1a252f;
+    padding: 5px;
+    border-top: 1px solid #0f0f0f;
+    position: absolute;
+    bottom: 0;
+}
+
+.container-term {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    height: 36px;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.navbar .nav {
+    text-align: center;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, .55);
+    position: sticky;
+    z-index: 2;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+    min-height: 4rem;
+}
+
+.btn-submit {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.btn-submit:hover {
+    opacity: 1;
+}
