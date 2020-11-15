@@ -53,6 +53,10 @@ a {
     border-radius: 5px;
 }
 
+.nav-item>* {
+    display: inline-block;
+}
+
 .nav-link:hover {
     color: #fff;
     background-color: red;
@@ -105,9 +109,8 @@ input[type=password]:focus {
 }
 
 .bottom-container {
-    background: #1a252f;
+    background: orangered;
     padding: 5px;
-    border-top: 1px solid #0f0f0f;
     position: absolute;
     bottom: 0;
 }
@@ -124,6 +127,7 @@ footer {
     font-size: 12px;
     height: 36px;
     color: white;
+    background-color: orangered;
     padding: 5px;
     margin-top: 10px;
 }

@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container col-md-7 offset-md-3">
     <h2>Thanks for voting {% if bunny['upvote'] == 'True' %} for {%else %} against {% endif %} {{bunny['name']}}!</h2>
-    <h3>Bunny ID: {{bunny['id']}}</h3>
+    <img id='bunny-logo' src="static/images/bunny.jpg">
+    <br />
+    <br />
+    <h3 ><span style="border-bottom:0.5px solid gray">Bunny ID: {{bunny['id']}}</span></h3>
     <br />
     <h4>Bio:</h4>
     <h5>-<i> {{bunny['bio']}}</i></h5>
