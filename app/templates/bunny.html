@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Thanks for voting {% if bunny['upvote'] == 'True' %} for {%else %} against {% endif %} {{bunny['name']}}!</h2>
+    <h3>Bunny ID: {{bunny['id']}}</h3>
+    <br />
+    <h4>Bio:</h4>
+    <h5>-<i> {{bunny['bio']}}</i></h5>
+</div>
+
+{% endblock %}

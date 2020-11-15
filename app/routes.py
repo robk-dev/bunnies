@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, request
 
 
 @app.route('/')
@@ -14,7 +14,7 @@ def login():
     return render_template("login.html", login=True)
 
 
-@app.route("/bunnies")
+@app.route("/bunnies", methods=['GET'])
 def bunnies():
     bunnies_data = [{
         "bunny_id": "sexy-bunny-19",
@@ -50,6 +50,18 @@ def bunnies():
 
     # print(bunnies_data[0])
     return render_template("bunnies.html", data=bunnies_data, bunnies=True)
+
+
+@app.route("/bunnies", methods=['POST'])
+def voted():
+    bunny = {
+        'id': request.form['bunny_id'],
+        'name': request.form['name'],
+        'upvote': request.form['upvote'],
+        'bio': request.form['bio']
+    }
+
+    return render_template("bunny.html", bunny=bunny, bunnies=True)
 
 
 @app.route("/carrots")

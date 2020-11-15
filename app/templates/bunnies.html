@@ -28,10 +28,22 @@
                 <td>{{bunny['score']}}</td>
                 <td>{{bunny['origin']}}</td>
                 <td>
+                    <form action="{{url_for('bunnies')}}" method='POST'>
+                    <input type='hidden' name='bunny_id' value="{{bunny['bunny_id']}}">
+                    <input type='hidden' name='name' value="{{bunny['name']}}">
+                    <input type='hidden' name='bio' value="{{bunny['bio']}}">
+                    <input type='hidden' name='upvote' value="True">
                     <button>Vote++</button>
+                    </form>
                 </td>
                 <td>
+                    <form action="{{url_for('bunnies')}}" method='POST'>
+                    <input type='hidden' name='bunny_id' value="{{bunny['bunny_id']}}">
+                    <input type='hidden' name='name' value="{{bunny['name']}}">
+                    <input type='hidden' name='bio' value="{{bunny['bio']}}">
+                    <input type='hidden' name='upvote' value="False">
                     <button>Vote--</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
