@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container col-md-7 offset-md-3">
-    <h2>{{bunny['name']}}!</h2>
+    <h2>Thanks for voting {% if bunny['upvote'] == 'True' %} for {%else %} against {% endif %} {{bunny['name']}}!</h2>
     <img id='bunny-logo' src="static/images/bunny.jpg">
     <br />
     <br />

@@ -22,14 +22,14 @@
 
             {% for bunny in data %}
             <tr>
-                <td scope='row'>{{bunny['bunny_id']}}</td>
+                <td scope='row'>{{bunny['id']}}</td>
                 <td>{{bunny['name']}}</td>
                 <td>{{bunny['bio']}}</td>
                 <td>{{bunny['score']}}</td>
                 <td>{{bunny['origin']}}</td>
                 <td>
-                    <form action="{{url_for('bunnies')}}" method='POST'>
-                    <input type='hidden' name='bunny_id' value="{{bunny['bunny_id']}}">
+                    <form action="{{url_for('vote')}}" method='POST'>
+                    <input type='hidden' name='id' value="{{bunny['id']}}">
                     <input type='hidden' name='name' value="{{bunny['name']}}">
                     <input type='hidden' name='bio' value="{{bunny['bio']}}">
                     <input type='hidden' name='upvote' value="True">
@@ -37,8 +37,8 @@
                     </form>
                 </td>
                 <td>
-                    <form action="{{url_for('bunnies')}}" method='POST'>
-                    <input type='hidden' name='bunny_id' value="{{bunny['bunny_id']}}">
+                    <form action="{{url_for('vote')}}" method='POST'>
+                    <input type='hidden' name='id' value="{{bunny['id']}}">
                     <input type='hidden' name='name' value="{{bunny['name']}}">
                     <input type='hidden' name='bio' value="{{bunny['bio']}}">
                     <input type='hidden' name='upvote' value="False">

@@ -1,6 +1,8 @@
+from werkzeug.wrappers import Response
 from app import app
-from flask import render_template, request
-
+from flask import render_template, request, json
+from app import db
+from app.models import User, Bunny, Vote
 
 @app.route('/')
 @app.route('/index')
@@ -13,55 +15,54 @@ def index():
 def login():
     return render_template("login.html", login=True)
 
+bunnies_data = [{
+    "id": "sexy-bunny-19",
+    "name": "John Carrotson",
+    "bio": "A hopper and a chopper for anything hoppening.",
+    "score": "6.5/10",
+    "origin": "New York"
+}, {
+    "id": "i-like-carrots",
+    "name": "Lolita Bunny",
+    "bio": "Likes hanging out at the carrot stand at the mall.",
+    "score": "8.5/10",
+    "origin": "Washington"
+}, {
+    "id": "c4rr07 4r3al",
+    "name": "Anonymous",
+    "bio": "Can burrow into any network patch.",
+    "score": "??/??",
+    "origin": "Dark Web"
+}, {
+    "id": "fluffy",
+    "name": "Fluffy McFluffer",
+    "bio": "The fluffliest fluff to ever be fluffed.",
+    "score": "9.5/10",
+    "origin": "Mexico"
+}, {
+    "id": "bugs",
+    "name": "Bugs Bunny",
+    "bio": "Always causes bugs and breaks production.",
+    "score": "3/10",
+    "origin": "Burrow End"
+}]
 
 @app.route("/bunnies", methods=['GET'])
 def bunnies():
-    bunnies_data = [{
-        "bunny_id": "sexy-bunny-19",
-        "name": "John Carrotson",
-        "bio": "A hopper and a chopper for anything hoppening.",
-        "score": "6.5/10",
-        "origin": "New York"
-    }, {
-        "bunny_id": "i-like-carrots",
-        "name": "Lolita Bunny",
-        "bio": "Likes hanging out at the carrot stand in the mall.",
-        "score": "8.5/10",
-        "origin": "Washington"
-    }, {
-        "bunny_id": "c4rr07 4r3al",
-        "name": "Anonymous",
-        "bio": "Can burrow into any network patch.",
-        "score": "??/??",
-        "origin": "Dark Web"
-    }, {
-        "bunny_id": "fluffy",
-        "name": "Fluffy McFluffer",
-        "bio": "The fluffliest fluff to ever be fluffed.",
-        "score": "9.5/10",
-        "origin": "Mexico"
-    }, {
-        "bunny_id": "bugs",
-        "name": "Bugs Bunny",
-        "bio": "Always causes bugs and breaks production.",
-        "score": "3/10",
-        "origin": "Burrow End"
-    }]
-
     # print(bunnies_data[0])
     return render_template("bunnies.html", data=bunnies_data, bunnies=True)
 
 
-@app.route("/bunnies", methods=['POST'])
+@app.route("/vote", methods=['POST'])
 def voted():
     bunny = {
-        'id': request.form['bunny_id'],
+        'id': request.form['id'],
         'name': request.form['name'],
         'upvote': request.form['upvote'],
         'bio': request.form['bio']
     }
 
-    return render_template("bunny.html", bunny=bunny, bunnies=True)
+    return render_template("vote.html", bunny=bunny, bunnies=True)
 
 
 @app.route("/carrots")
@@ -93,3 +94,17 @@ def carrots():
 @app.route("/register")
 def register():
     return render_template("register.html", login=False, register=True)
+
+@app.route('/api/', methods=['GET'])
+@app.route('/api/<id>', methods=['GET'])
+def api(id=None):
+    data = bunnies_data
+    for idx, obj in enumerate(bunnies_data):
+        if (obj['id'] == id):
+            data = bunnies_data[idx]
+    return Response(json.dumps(data), mimetype='application/json')
+
+@app.route('/user')
+def user():
+    return render_template('user.html', users=User.objects.all())
+    
