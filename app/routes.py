@@ -3,7 +3,7 @@ from app import app
 from flask import render_template, request, json, redirect, flash
 from app import db
 from app.models import User, Bunny, Vote
-from app.forms import LoginForm
+from app.forms import RegisterForm, LoginForm
 
 
 @app.route('/')
@@ -18,7 +18,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         if request.form.get('email') == 'test@example.com':
-            flash('You are successfully logged in!', 'success')
+            flash('You have successfully logged in!', 'success')
             return redirect('/home')
         else:
             flash('Sorry, something went wrong', 'danger')
@@ -104,7 +104,14 @@ def carrots():
 
 @app.route("/register")
 def register():
-    return render_template("register.html", login=False, register=True)
+    form = RegisterForm()
+    if form.validate_on_submit():
+        if request.form.get('email') == 'test@example.com':
+            flash('You have successfully logged in!', 'success')
+            return redirect('/home')
+        else:
+            flash('Sorry, something went wrong', 'danger')
+    return render_template("register.html", title='New Bunny Lover Registration', form=form, register=True)
 
 
 @app.route('/api/', methods=['GET'])

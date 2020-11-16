@@ -55,12 +55,13 @@ a {
 
 .nav-item>* {
     display: inline-block;
+    text-decoration: bold;
 }
 
 .nav-link:hover {
     color: #fff;
     background-color: red;
-    text-decoration: underline;
+    text-decoration: bold underline;
 }
 
 .nav-link.active {
@@ -68,10 +69,9 @@ a {
 }
 
 #bunny-logo {
-    margin-top: 15px;
-    border-radius: 15px;
-    border-right: 1px solid rgba(0, 0, 0, .12);
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+    border-radius: 30px;
+    box-shadow: -8px 10px 30px 6px #00000069;
+    border: 20px solid orangered;
 }
 
 
@@ -134,12 +134,14 @@ label p {
 
 footer {
     text-align: center;
+    bottom: 0;
+    width: 100%;
     font-size: 12px;
-    height: 36px;
+    width: 100%;
+    height: 2rem; 
     color: white;
     background-color: orangered;
-    padding: 5px;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .navbar .nav {
@@ -164,6 +166,20 @@ footer {
     opacity: 0.9;
 }
 
+.btn-table {
+    background-color: orangered;
+    color: white;
+    padding: 8px 10px;
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 .btn-submit:hover {
     opacity: 1;
+}
+
+.error-message {
+    color: red;
 }

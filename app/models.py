@@ -1,12 +1,18 @@
 import flask
 from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Document):
     user_id = db.IntField(unique=True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=50)
+    username = db.StringField(max_length=35)
     email = db.StringField(max_length=50)
-    password = db.StringField(max_length=30)
+    password = db.StringField()
+    
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+    
+    def get_password(self, password):
+        return check_password_hash(self.password, password)
     
 class Bunny(db.Document):
     bunny_id = db.StringField(unique=True, max_length=20)
@@ -23,7 +29,7 @@ class Carrot(db.Document):
     texture = db.StringField(max_length=20)
     
 class Vote(db.Document):
-    vote_id = db.IntField(unique=True)
-    user_id = db.IntField(unique=True)
-    bunny_id = db.StringField(unique=True, max_length=20)
+    vote_id = db.StringField(unique=True)
+    user_id = db.IntField()
+    bunny_id = db.StringField()
     upvote = db.BooleanField()

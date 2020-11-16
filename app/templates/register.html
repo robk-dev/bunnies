@@ -1,21 +1,38 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2 style="text-align:center">New Bunny Lover Registration</h2>
+<legend>Join AmazingBunny.com</legend>
+<h2 style="text-align:center">{{title}}</h2>
 <br>
 
 <div class="col-md-6 offset-md-3">
     <form name="register" class="text-left" action="register" method="get">
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Username" name="username" required>
-        <br>
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Email" name="email" required>
-        <br>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Password" name="password" required>
-        <br class="clear">
-        <input class="btn-submit" type="submit" name="submit">
+        <fieldset class='form-group text-left'>
+            {{ form.hidden_tag() }}
+
+
+            {{ form.username.label }}<br>
+            {{ form.username(size=35, placeholder='Enter username') }}<br>
+
+            {% for error in form.email.errors %}
+            <span class='error-message'>{{ error }}</span>
+            {% endfor %}
+
+            {{ form.email.label }}<br>
+            {{ form.email(size=50, placeholder='Enter email') }}<br>
+
+            {% for error in form.email.errors %}
+            <span class='error-message'>{{ error }}</span>
+            {% endfor %}
+            {{ form.password.label }}<br>
+            {{ form.password(size=32, type='password', placeholder='Enter password') }}<br>
+
+            {% for error in form.password.errors %}
+            <span class='error-message'>{{ error }}</span>
+            {% endfor %}
+
+            {{ form.submit(class_="btn-submit") }}
+        </fieldset>
     </form>
     <h5 style="text-align:center">Registered? <a href="{{url_for('login')}}">Login</a></h5>
 </div>
