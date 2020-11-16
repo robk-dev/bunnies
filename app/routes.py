@@ -1,8 +1,10 @@
+from werkzeug.wrappers import Response
 from app import app
-from flask import render_template, request, json, Response
+from flask import render_template, request, json, redirect, flash
 from app import db
 from app.models import User, Bunny, Vote
 from app.forms import LoginForm
+
 
 @app.route('/')
 @app.route('/index')
@@ -14,6 +16,12 @@ def index():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        if request.form.get('email') == 'test@example.com':
+            flash('You are successfully logged in!', 'success')
+            return redirect('/home')
+        else:
+            flash('Sorry, something went wrong', 'danger')
     return render_template("login.html", title='Login', form=form, login=True)
 
 
@@ -56,8 +64,8 @@ def bunnies():
     return render_template("bunnies.html", data=bunnies_data, bunnies=True)
 
 
-@app.route("/vote", methods=['POST'])
-def voted():
+@app.route("/vote", methods=['POST', 'GET'])
+def vote():
     bunny = {
         'id': request.form['id'],
         'name': request.form['name'],

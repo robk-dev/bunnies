@@ -3,22 +3,22 @@
 {% block content %}
 <h1 style='text-align:center'>{{title}}</h1>
 
-<div class="row">
+<div>
     <div class="col-md-6 offset-md-3">
         <br>
         <form name="login" action="login" method="post">
             {{ form.hidden_tag() }}
 
-            <p>
+            <p class='text-left'>
                 {{ form.email.label }}<br>
-                {{ form.email(size=35) }}<br>
+                {{ form.email(size=35, placeholder='Enter email') }}<br>
             </p>
-            <p>
+            <p class='text-left'>
                 {{ form.password.label }}<br>
-                {{ form.password(size=15) }}<br>
+                {{ form.password(size=16, type='password', placeholder='Enter password') }}<br>
             </p>
             <p>
-                {{ form.submit() }}
+                {{ form.submit(class_="btn-submit") }}
             </p>
             <!-- <label for="username"><b>Username or email</b></label>
             <input type="text" placeholder="Username" name="username" required>

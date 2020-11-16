@@ -1,13 +1,15 @@
 <header>
     <nav>
         <ul class="nav navbar nav-tabs">
-            <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link {% if index %}active{% endif %}">Home</a></li>
+            <li class="nav-item">
+                <a href="{{ url_for('index') }}" class="nav-link {% if index %}active{% endif %}">
+                    <img src="static/images/home-24px.svg" width="24" height="24" style="margin-right: 3px">Home</a></li>
             <li class="nav-item"><a  href="{{ url_for('bunnies') }}" 
                 class="nav-link {% if bunnies %}active{% endif %}">
-                <img src="static/images/favicon-32x32.png" width="24" height="24" style="padding-right: 4px">Bunnies</a></li>
+                <img src="static/images/favicon-32x32.png" width="24" height="24" style="margin-right: 3px; padding-right: 2px">Bunnies</a></li>
             <li class="nav-item"><a href="{{ url_for('carrots') }}"
                 class="nav-link {% if carrots %}active{% endif %}">
-                <img src="static/images/carrot-180x180.png" style="padding-right: 2px" width="24" height="24" >
+                <img src="static/images/carrot-180x180.png" style="margin-right: 3px" width="24" height="24" >
                 Carrots</a></li>
             <li class="nav-item"><a href="{{ url_for('register') }}" class="nav-link {% if register %}active{% endif %}">Register</a></li>
             <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link {% if login %}active{% endif %}">Login</a></li>

@@ -100,6 +100,16 @@ input[type=password]:focus {
     outline: none;
 }
 
+.container {
+    align-items: center;
+    text-align: center;
+}
+
+label p {
+    text-align: left;
+    align-items: left;
+}
+
 .top-container {
     background: #fff;
     color: rgba(0, 0, 0, .87);
@@ -144,7 +154,7 @@ footer {
 }
 
 .btn-submit {
-    background-color: cornflowerblue;
+    background-color: orangered;
     color: white;
     padding: 16px 20px;
     margin: 8px 0;
