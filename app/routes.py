@@ -1,8 +1,8 @@
-from werkzeug.wrappers import Response
 from app import app
-from flask import render_template, request, json
+from flask import render_template, request, json, Response
 from app import db
 from app.models import User, Bunny, Vote
+from app.forms import LoginForm
 
 @app.route('/')
 @app.route('/index')
@@ -11,9 +11,11 @@ def index():
     return render_template('index.html', index=True)
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template("login.html", login=True)
+    form = LoginForm()
+    return render_template("login.html", title='Login', form=form, login=True)
+
 
 bunnies_data = [{
     "id": "sexy-bunny-19",
@@ -46,6 +48,7 @@ bunnies_data = [{
     "score": "3/10",
     "origin": "Burrow End"
 }]
+
 
 @app.route("/bunnies", methods=['GET'])
 def bunnies():
@@ -95,6 +98,7 @@ def carrots():
 def register():
     return render_template("register.html", login=False, register=True)
 
+
 @app.route('/api/', methods=['GET'])
 @app.route('/api/<id>', methods=['GET'])
 def api(id=None):
@@ -104,7 +108,7 @@ def api(id=None):
             data = bunnies_data[idx]
     return Response(json.dumps(data), mimetype='application/json')
 
+
 @app.route('/user')
 def user():
     return render_template('user.html', users=User.objects.all())
-    
